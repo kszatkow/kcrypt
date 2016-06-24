@@ -1,3 +1,5 @@
+TOP_LEVEL_DIR := 
+
 include Makefile.common
 
 .PHONY: all src test clean

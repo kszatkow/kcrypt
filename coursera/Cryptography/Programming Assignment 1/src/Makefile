@@ -1,6 +1,6 @@
-include ../Makefile.common
+TOP_LEVEL_DIR := ../
 
-override CPPFLAGS += -I../inc
+include ../Makefile.common
 
 SRC := $(wildcard *$(CPP_SUFFIX))
 OBJ := $(SRC:$(CPP_SUFFIX)=$(OBJ_SUFFIX))
