@@ -7,20 +7,37 @@
 
 #include "attackViginere.h"
 
-#include <sstream>
+#include <cstdint>
+#include <string>
 #include <vector>
-#include <iostream>
+#include <sstream>
+#include <iomanip>
+#include <cassert>
 
 using namespace std;
 
-void test_getCiphertext() {
-	istringstream in("F96D E8C227");
-
-	vector<char> ciphertext = getCiphertext(in);
-	for (auto elem : ciphertext) {
-		cout << static_cast<int>(elem) << " ";
+string convertBytesToHexString(const vector<uint8_t>& bytes) {
+	ostringstream os;
+	for (uint8_t c : bytes) {
+		// cast needed to avoid displaying as char (ascii)
+		os << hex << noshowbase << uppercase << static_cast<uint16_t>(c);
 	}
-	cout << endl;
+	return os.str();
+}
+
+void test_getCiphertext() {
+	// given
+	vector<uint8_t> expectedOutput = { 0xF9, 0x6D, 0xE8, 0xC2, 0x27, 0x45, 0xEF, 0x23 };
+	istringstream in( convertBytesToHexString( expectedOutput ) );
+
+	// when
+	vector<uint8_t> ciphertext = getCiphertext(in);
+
+	// then
+	auto ciphertextIter = ciphertext.begin();
+	for (auto encryptedByte : expectedOutput) {
+		assert( encryptedByte == *ciphertextIter++);
+	}
 }
 
 int main(int argc, char** argv) {

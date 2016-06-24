@@ -7,9 +7,9 @@ OBJ := $(SRC:$(CPP_SUFFIX)=$(OBJ_SUFFIX))
 
 .PHONY: all clean src
 
-all :  testMain
+all :  src testMain
 
-testMain : testMain$(OBJ_SUFFIX) $(OBJ) 
+testMain : testMain$(OBJ_SUFFIX) $(OBJ)
 	$(CXX) $(LDFLAGS) -o $@ $? $(TOP_LEVEL_DIR)/src/*$(OBJ_SUFFIX) $(LDLIBS)
 
 src : 

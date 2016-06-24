@@ -9,10 +9,10 @@
 #define ATTACKVIGINERE_H_
 
 #include <vector>
+#include <cstdint>
 #include <iosfwd>
 
-
-std::vector<char> getCiphertext(std::istream& in);
+std::vector<uint8_t> getCiphertext(std::istream& in);
 
 
 
