@@ -1,0 +1,27 @@
+##### compilation flags #####
+
+# language standard
+STD_FLAG = -std=c++11
+
+# include flags
+INC_FLAG = -Iinc
+
+# compiler warnings
+CXXWARNFLAGS := -Wall -Wold-style-cast -Wundef -Wsign-compare -Wconversion -Wpointer-arith -pedantic
+
+# all flags used during compilation
+CXXFLAGS := $(CXXWARNFLAGS) -g -O2 $(STD_FLAG) $(INC_FLAG)
+
+
+##### file extensions #####
+
+# cpp source files extension
+CPP_SUFFIX := .cpp
+
+# object files extension
+OBJ_SUFFIX := .o
+
+BIN_SUFFIX :=
+
+
+
